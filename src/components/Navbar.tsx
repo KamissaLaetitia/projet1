@@ -131,10 +131,10 @@ export const Navbar = () => {
               )}
             </button>
 
-            {/* Direct CTA button on Desktop */}
+            {/* Direct CTA button on Desktop ONLY */}
             <Link
               href="/catalogue"
-              className="btn-caffeine-primary text-xs sm:text-sm !py-2 sm:!py-2.5 !px-4 sm:!px-5 hidden md:inline-flex"
+              className="btn-caffeine-primary text-xs xl:text-sm !py-2 !px-5 hidden lg:inline-flex shrink-0"
             >
               Commander
             </Link>
@@ -147,12 +147,12 @@ export const Navbar = () => {
               aria-label={mobileMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-drawer"
-              className="flex lg:hidden items-center justify-center w-10 h-10 min-w-[40px] min-h-[40px] rounded-xl bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold hover:border-caffeine-gold/60 shadow-sm active:scale-90 transition-all cursor-pointer shrink-0 select-none touch-manipulation"
+              className="flex lg:hidden items-center justify-center w-10 h-10 min-w-[40px] min-h-[40px] rounded-xl bg-caffeine-surface hover:bg-caffeine-gold/10 border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold shadow-sm active:scale-90 transition-all cursor-pointer shrink-0 select-none touch-manipulation"
             >
               {mobileMenuOpen ? (
-                <X className="w-6 h-6 text-caffeine-cream stroke-[2.2]" />
+                <X className="w-5 h-5 text-caffeine-cream stroke-[2.2]" />
               ) : (
-                <Menu className="w-6 h-6 text-caffeine-cream stroke-[2.2]" />
+                <Menu className="w-5 h-5 text-caffeine-cream stroke-[2.2]" />
               )}
             </button>
           </div>
