@@ -292,7 +292,7 @@ export const INITIAL_PRODUCTS: Product[] = [
 
 export const PROMO_CODES: PromoCode[] = [
   {
-    code: 'GOURMAND20',
+    code: 'BIENVENUE20',
     discountPercent: 20,
     minAmount: 25000,
     description: '-20% sur toute votre première commande dès 25 000 FCFA',
@@ -385,7 +385,7 @@ export const INITIAL_ORDERS: Order[] = [
     ],
     subtotal: 28000,
     discountAmount: 5600,
-    promoCode: 'GOURMAND20',
+    promoCode: 'BIENVENUE20',
     deliveryFee: 0,
     totalAmount: 22400,
     status: 'preparing',
