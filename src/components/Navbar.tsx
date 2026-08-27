@@ -143,66 +143,66 @@ export const Navbar = () => {
             <button
               type="button"
               id="mobile-hamburger-btn"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 sm:p-2.5 rounded-xl bg-caffeine-surface hover:bg-caffeine-gold/10 border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold shadow-sm active:scale-95 transition-all flex items-center justify-center cursor-pointer select-none"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-drawer"
+              className="flex lg:hidden items-center justify-center w-10 h-10 min-w-[40px] min-h-[40px] rounded-xl bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold hover:border-caffeine-gold/60 shadow-sm active:scale-90 transition-all cursor-pointer shrink-0 select-none touch-manipulation"
             >
               {mobileMenuOpen ? (
-                <X className="w-5 h-5 text-caffeine-cream" />
+                <X className="w-6 h-6 text-caffeine-cream stroke-[2.2]" />
               ) : (
-                <Menu className="w-5 h-5 text-caffeine-cream" />
+                <Menu className="w-6 h-6 text-caffeine-cream stroke-[2.2]" />
               )}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation Dropdown Menu (Directly Under the Navbar) */}
-        {mobileMenuOpen && (
-          <div
-            id="mobile-nav-drawer"
-            className="lg:hidden w-full bg-white border-t border-caffeine-cardBorder shadow-2xl max-h-[80vh] overflow-y-auto overscroll-contain transition-all"
-            style={{ backgroundColor: '#ffffff' }}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Menu principal"
-          >
-            <div className="p-4 space-y-2.5" style={{ backgroundColor: '#ffffff' }}>
-              {navLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`w-full min-h-[48px] flex items-center justify-between px-4 py-3.5 rounded-xl font-display font-bold text-sm transition-all border block shadow-xs ${
-                      isActive
-                        ? 'border-caffeine-gold text-caffeine-gold font-black'
-                        : 'border-caffeine-cardBorder text-caffeine-cream active:bg-caffeine-gold/10'
-                    }`}
-                    style={{ backgroundColor: isActive ? '#faeed9' : '#fdf8f2' }}
-                  >
-                    <span className="tracking-wide">{link.name}</span>
-                    <span className="text-caffeine-gold font-black text-base">→</span>
-                  </Link>
-                );
-              })}
-
-              {/* Action Button at Bottom of Dropdown */}
-              <div className="pt-3 border-t border-caffeine-cardBorder" style={{ backgroundColor: '#ffffff' }}>
+        <div
+          id="mobile-nav-drawer"
+          className={`lg:hidden w-full bg-white border-t border-caffeine-cardBorder shadow-2xl max-h-[80vh] overflow-y-auto overscroll-contain transition-all ${
+            mobileMenuOpen ? 'block' : 'hidden'
+          }`}
+          style={{ backgroundColor: '#ffffff' }}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu principal"
+        >
+          <div className="p-4 space-y-2.5" style={{ backgroundColor: '#ffffff' }}>
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
                 <Link
-                  href="/catalogue"
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="btn-caffeine-primary w-full text-center !py-3.5 text-sm font-bold flex items-center justify-center gap-2 shadow-gold-md block"
+                  className={`w-full min-h-[48px] flex items-center justify-between px-4 py-3.5 rounded-xl font-display font-bold text-sm transition-all border block shadow-xs ${
+                    isActive
+                      ? 'border-caffeine-gold text-caffeine-gold font-black'
+                      : 'border-caffeine-cardBorder text-caffeine-cream active:bg-caffeine-gold/10'
+                  }`}
+                  style={{ backgroundColor: isActive ? '#faeed9' : '#fdf8f2' }}
                 >
-                  <span>Explorer le Catalogue de Gâteaux</span>
-                  <Sparkles className="w-4 h-4" />
+                  <span className="tracking-wide">{link.name}</span>
+                  <span className="text-caffeine-gold font-black text-base">→</span>
                 </Link>
-              </div>
+              );
+            })}
+
+            {/* Action Button at Bottom of Dropdown */}
+            <div className="pt-3 border-t border-caffeine-cardBorder" style={{ backgroundColor: '#ffffff' }}>
+              <Link
+                href="/catalogue"
+                onClick={() => setMobileMenuOpen(false)}
+                className="btn-caffeine-primary w-full text-center !py-3.5 text-sm font-bold flex items-center justify-center gap-2 shadow-gold-md block"
+              >
+                <span>Explorer le Catalogue de Gâteaux</span>
+                <Sparkles className="w-4 h-4" />
+              </Link>
             </div>
           </div>
-        )}
+        </div>
       </header>
     </>
   );
