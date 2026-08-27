@@ -127,23 +127,6 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* Floating Card 1: Top Right Flash Promo */}
-            <div className="absolute -top-4 -right-4 sm:-right-6 bg-white/95 border border-caffeine-gold/40 rounded-2xl p-4 shadow-[0_10px_30px_rgba(180,130,80,0.15)] backdrop-blur-xl hidden sm:flex items-center gap-3.5 animate-float">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-caffeine-gold/25 to-caffeine-gold/10 border border-caffeine-gold/30 flex items-center justify-center text-caffeine-gold font-black text-xs shadow-gold-sm">
-                -20%
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-xs font-black text-caffeine-cream uppercase tracking-wide">
-                  Code : GOURMAND20
-                </span>
-                <span className="text-[11px] text-caffeine-subtle font-medium">
-                  Offre de bienvenue
-                </span>
-              </div>
-            </div>
-
-
-
           </div>
 
         </div>
