@@ -198,7 +198,7 @@ export const CartDrawer = () => {
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="Code promo (ex: GOURMAND20)"
+                    placeholder="Code promo (ex: BIENVENUE20)"
                     value={promoInput}
                     onChange={(e) => setPromoInput(e.target.value)}
                     className="flex-1 px-3 py-2 rounded-xl bg-white border border-caffeine-cardBorder text-xs text-caffeine-cream placeholder:text-caffeine-muted uppercase focus:outline-none focus:border-caffeine-gold shadow-sm"
