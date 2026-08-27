@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ShoppingBag, Menu, X, Sparkles, Search, Clock, ShieldCheck } from 'lucide-react';
+import { ShoppingBag, Menu, X, Sparkles, Search } from 'lucide-react';
 import { useCartStore } from '@/store/useCartStore';
 import { formatPrice } from '@/lib/utils';
 
@@ -140,8 +140,9 @@ export const Navbar = () => {
 
             {/* Mobile Menu Trigger */}
             <button
+              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-full bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold hover:border-caffeine-gold/60 shadow-sm active:scale-95 transition-all flex items-center justify-center"
+              className="lg:hidden p-2.5 rounded-full bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold hover:border-caffeine-gold/60 shadow-sm active:scale-95 transition-all flex items-center justify-center cursor-pointer select-none"
               aria-label={mobileMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-drawer"
