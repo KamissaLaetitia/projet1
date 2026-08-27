@@ -159,11 +159,6 @@ export const Footer = () => {
                   Nous Contacter & Laboratoires
                 </Link>
               </li>
-              <li>
-                <Link href="/admin" className="text-caffeine-gold/80 hover:text-caffeine-gold transition-colors font-medium">
-                  Espace Administration
-                </Link>
-              </li>
             </ul>
           </div>
 
