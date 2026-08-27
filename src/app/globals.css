@@ -196,3 +196,20 @@ h1, h2, h3, h4, h5, h6 {
   pointer-events: none;
   border-radius: 9999px;
 }
+
+/* Force Mobile Hamburger & Navigation Visibility */
+@media (max-width: 1023px) {
+  #mobile-hamburger-btn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 50 !important;
+  }
+  #mobile-nav-drawer.menu-open {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 50 !important;
+  }
+}
+
