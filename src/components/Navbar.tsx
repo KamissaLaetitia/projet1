@@ -181,7 +181,7 @@ export const Navbar = () => {
       {mobileMenuOpen && (
         <div
           id="mobile-nav-drawer"
-          className="lg:hidden fixed inset-0 z-50 flex flex-col justify-start"
+          className="lg:hidden fixed inset-0 z-[99999] flex flex-col justify-start"
           role="dialog"
           aria-modal="true"
           aria-label="Menu principal"
@@ -189,35 +189,41 @@ export const Navbar = () => {
           {/* Dimmed Blur Backdrop */}
           <div
             onClick={() => setMobileMenuOpen(false)}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-200 animate-fade-in"
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-200"
             aria-hidden="true"
           />
 
-          {/* Sliding Content Container */}
-          <div className="relative w-full bg-white border-b-2 border-caffeine-gold/40 shadow-2xl z-10 max-h-[90vh] overflow-y-auto overscroll-contain flex flex-col">
+          {/* 100% Opaque Solid Sliding Sheet Container */}
+          <div
+            className="relative w-full border-b-4 border-caffeine-gold shadow-2xl z-10 max-h-[90vh] overflow-y-auto overscroll-contain flex flex-col"
+            style={{ backgroundColor: '#ffffff' }}
+          >
             
             {/* Drawer Header with Title & Close Button */}
-            <div className="flex items-center justify-between px-4 py-3.5 bg-caffeine-surface border-b border-caffeine-cardBorder">
+            <div
+              className="flex items-center justify-between px-4 py-3.5 border-b border-caffeine-cardBorder"
+              style={{ backgroundColor: '#f4ede2' }}
+            >
               <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-caffeine-gold to-caffeine-goldHover flex items-center justify-center shadow-sm">
-                  <Sparkles className="w-3.5 h-3.5 text-white" />
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-caffeine-gold to-caffeine-goldHover flex items-center justify-center shadow-sm">
+                  <Sparkles className="w-4 h-4 text-white" />
                 </div>
-                <span className="font-display font-black text-sm text-caffeine-cream tracking-wide">
+                <span className="font-display font-black text-base text-caffeine-cream tracking-wide">
                   PÂTISSERIE <span className="text-caffeine-gold">ROYALE</span>
                 </span>
               </div>
 
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-1.5 rounded-lg bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold shadow-sm"
+                className="p-2 rounded-xl bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold shadow-sm active:scale-95 transition-transform"
                 aria-label="Fermer le menu"
               >
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5 text-caffeine-cream" />
               </button>
             </div>
 
             {/* Links Stack (Vertical Space-Y to Guarantee 0 Overlap on All Devices) */}
-            <div className="p-4 space-y-2.5 overflow-y-auto">
+            <div className="p-4 space-y-2.5 overflow-y-auto" style={{ backgroundColor: '#ffffff' }}>
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -225,35 +231,37 @@ export const Navbar = () => {
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`w-full min-h-[48px] flex items-center justify-between px-4 py-3 rounded-xl font-display font-medium text-sm transition-all border ${
+                    className={`w-full min-h-[48px] flex items-center justify-between px-4 py-3.5 rounded-xl font-display font-bold text-sm transition-all border block shadow-xs ${
                       isActive
-                        ? 'bg-caffeine-gold/15 border-caffeine-gold text-caffeine-gold font-bold shadow-sm'
-                        : 'bg-caffeine-surface border-caffeine-cardBorder text-caffeine-cream active:bg-caffeine-gold/10'
+                        ? 'border-caffeine-gold text-caffeine-gold'
+                        : 'border-caffeine-cardBorder text-caffeine-cream active:bg-caffeine-gold/10'
                     }`}
+                    style={{ backgroundColor: isActive ? '#faeed9' : '#fdf8f2' }}
                   >
-                    <span>{link.name}</span>
-                    <span className="text-caffeine-gold font-bold text-base">→</span>
+                    <span className="tracking-wide">{link.name}</span>
+                    <span className="text-caffeine-gold font-black text-base">→</span>
                   </Link>
                 );
               })}
 
               {/* Action Buttons at Bottom of Drawer */}
-              <div className="pt-3 border-t border-caffeine-cardBorder space-y-2">
+              <div className="pt-3 border-t border-caffeine-cardBorder space-y-2.5" style={{ backgroundColor: '#ffffff' }}>
                 <Link
                   href="/catalogue"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="btn-caffeine-primary w-full text-center !py-3 text-sm flex items-center justify-center gap-2 shadow-gold-sm"
+                  className="btn-caffeine-primary w-full text-center !py-3.5 text-sm font-bold flex items-center justify-center gap-2 shadow-gold-md block"
                 >
-                  <span>Explorer le Catalogue</span>
+                  <span>Explorer le Catalogue de Gâteaux</span>
                   <Sparkles className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/admin"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="btn-caffeine-secondary w-full text-center !py-2.5 text-xs flex items-center justify-center gap-1.5"
+                  className="btn-caffeine-secondary w-full text-center !py-3 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm block"
+                  style={{ backgroundColor: '#f4ede2' }}
                 >
-                  <ShieldCheck className="w-3.5 h-3.5 text-caffeine-gold" />
-                  <span>Espace Administration</span>
+                  <ShieldCheck className="w-4 h-4 text-caffeine-gold" />
+                  <span>Accéder à l&apos;Administration</span>
                 </Link>
               </div>
             </div>
