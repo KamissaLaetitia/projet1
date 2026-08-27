@@ -615,7 +615,7 @@ export default function CartAndCheckoutPage() {
                 <div className="flex gap-2">
                   <input
                     type="text"
-                    placeholder="Code Promo (ex: GOURMAND20)"
+                    placeholder="Code Promo (ex: BIENVENUE20)"
                     value={promoInput}
                     onChange={(e) => setPromoInput(e.target.value)}
                     className="flex-1 px-3.5 py-2.5 rounded-xl bg-caffeine-surface border border-caffeine-cardBorder text-xs text-caffeine-cream uppercase placeholder:text-caffeine-muted focus:outline-none focus:border-caffeine-gold focus:bg-white shadow-sm transition-all"
