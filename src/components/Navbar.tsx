@@ -162,7 +162,7 @@ export const Navbar = () => {
         <div
           id="mobile-nav-drawer"
           className={`lg:hidden w-full bg-white border-t border-caffeine-cardBorder shadow-2xl max-h-[80vh] overflow-y-auto overscroll-contain transition-all ${
-            mobileMenuOpen ? 'block' : 'hidden'
+            mobileMenuOpen ? 'menu-open block' : 'hidden'
           }`}
           style={{ backgroundColor: '#ffffff' }}
           role="dialog"
