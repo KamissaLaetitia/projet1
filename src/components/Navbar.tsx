@@ -131,15 +131,6 @@ export const Navbar = () => {
               )}
             </button>
 
-            {/* Direct CTA button on Desktop ONLY */}
-            <Link
-              id="desktop-cta-btn"
-              href="/catalogue"
-              className="btn-caffeine-primary text-xs xl:text-sm !py-2 !px-5 hidden lg:inline-flex shrink-0"
-            >
-              Commander
-            </Link>
-
             {/* Mobile Menu Hamburger Button */}
             <button
               type="button"
