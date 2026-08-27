@@ -56,13 +56,14 @@ export const Navbar = () => {
     <>
       {/* Main Navigation Header */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 w-full max-w-full ${
+        className={`sticky top-0 z-50 transition-all duration-300 w-full max-w-full ${
           isScrolled
-            ? 'glass-nav py-2.5 sm:py-3 shadow-md shadow-black/5'
-            : 'bg-white/95 backdrop-blur-md border-b border-caffeine-cardBorder py-3 sm:py-4 shadow-sm shadow-black/[0.03]'
+            ? 'glass-nav shadow-md shadow-black/5'
+            : 'bg-white border-b border-caffeine-cardBorder shadow-sm shadow-black/[0.03]'
         }`}
+        style={{ backgroundColor: '#ffffff' }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between">
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
@@ -115,7 +116,7 @@ export const Navbar = () => {
             <button
               onClick={toggleCart}
               aria-label="Ouvrir le panier"
-              className="relative p-2.5 rounded-full bg-white border border-caffeine-cardBorder hover:border-caffeine-gold/60 text-caffeine-cream hover:text-caffeine-gold transition-all duration-200 group flex items-center gap-1.5 sm:gap-2 shadow-sm hover:shadow-md"
+              className="relative p-2 sm:p-2.5 rounded-full bg-white border border-caffeine-cardBorder hover:border-caffeine-gold/60 text-caffeine-cream hover:text-caffeine-gold transition-all duration-200 group flex items-center gap-1.5 sm:gap-2 shadow-sm hover:shadow-md"
             >
               <ShoppingBag className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-caffeine-gold group-hover:scale-110 transition-transform" />
               {itemsCount > 0 && (
@@ -130,7 +131,7 @@ export const Navbar = () => {
               )}
             </button>
 
-            {/* Direct CTA button */}
+            {/* Direct CTA button on Desktop */}
             <Link
               href="/catalogue"
               className="btn-caffeine-primary text-xs sm:text-sm !py-2 sm:!py-2.5 !px-4 sm:!px-5 hidden md:inline-flex"
@@ -138,68 +139,36 @@ export const Navbar = () => {
               Commander
             </Link>
 
-            {/* Mobile Menu Trigger */}
+            {/* Mobile Menu Hamburger Button */}
             <button
               type="button"
+              id="mobile-hamburger-btn"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2.5 rounded-full bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold hover:border-caffeine-gold/60 shadow-sm active:scale-95 transition-all flex items-center justify-center cursor-pointer select-none"
+              className="lg:hidden p-2 sm:p-2.5 rounded-xl bg-caffeine-surface hover:bg-caffeine-gold/10 border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold shadow-sm active:scale-95 transition-all flex items-center justify-center cursor-pointer select-none"
               aria-label={mobileMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-drawer"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5 text-caffeine-cream" />
+              ) : (
+                <Menu className="w-5 h-5 text-caffeine-cream" />
+              )}
             </button>
           </div>
         </div>
-      </header>
 
-      {/* Bulletproof Mobile Drawer (Standalone Portal Fixed Container) */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-nav-drawer"
-          className="lg:hidden fixed inset-0 z-[99999] flex flex-col justify-start"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Menu principal"
-        >
-          {/* Dimmed Blur Backdrop */}
+        {/* Mobile Navigation Dropdown Menu (Directly Under the Navbar) */}
+        {mobileMenuOpen && (
           <div
-            onClick={() => setMobileMenuOpen(false)}
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-200"
-            aria-hidden="true"
-          />
-
-          {/* 100% Opaque Solid Sliding Sheet Container */}
-          <div
-            className="relative w-full border-b-4 border-caffeine-gold shadow-2xl z-10 max-h-[90vh] overflow-y-auto overscroll-contain flex flex-col"
+            id="mobile-nav-drawer"
+            className="lg:hidden w-full bg-white border-t border-caffeine-cardBorder shadow-2xl max-h-[80vh] overflow-y-auto overscroll-contain transition-all"
             style={{ backgroundColor: '#ffffff' }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu principal"
           >
-            
-            {/* Drawer Header with Title & Close Button */}
-            <div
-              className="flex items-center justify-between px-4 py-3.5 border-b border-caffeine-cardBorder"
-              style={{ backgroundColor: '#f4ede2' }}
-            >
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-caffeine-gold to-caffeine-goldHover flex items-center justify-center shadow-sm">
-                  <Sparkles className="w-4 h-4 text-white" />
-                </div>
-                <span className="font-display font-black text-base text-caffeine-cream tracking-wide">
-                  PÂTISSERIE <span className="text-caffeine-gold">ROYALE</span>
-                </span>
-              </div>
-
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-xl bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold shadow-sm active:scale-95 transition-transform"
-                aria-label="Fermer le menu"
-              >
-                <X className="w-5 h-5 text-caffeine-cream" />
-              </button>
-            </div>
-
-            {/* Links Stack (Vertical Space-Y to Guarantee 0 Overlap on All Devices) */}
-            <div className="p-4 space-y-2.5 overflow-y-auto" style={{ backgroundColor: '#ffffff' }}>
+            <div className="p-4 space-y-2.5" style={{ backgroundColor: '#ffffff' }}>
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -209,7 +178,7 @@ export const Navbar = () => {
                     onClick={() => setMobileMenuOpen(false)}
                     className={`w-full min-h-[48px] flex items-center justify-between px-4 py-3.5 rounded-xl font-display font-bold text-sm transition-all border block shadow-xs ${
                       isActive
-                        ? 'border-caffeine-gold text-caffeine-gold'
+                        ? 'border-caffeine-gold text-caffeine-gold font-black'
                         : 'border-caffeine-cardBorder text-caffeine-cream active:bg-caffeine-gold/10'
                     }`}
                     style={{ backgroundColor: isActive ? '#faeed9' : '#fdf8f2' }}
@@ -220,7 +189,7 @@ export const Navbar = () => {
                 );
               })}
 
-              {/* Action Button at Bottom of Drawer */}
+              {/* Action Button at Bottom of Dropdown */}
               <div className="pt-3 border-t border-caffeine-cardBorder" style={{ backgroundColor: '#ffffff' }}>
                 <Link
                   href="/catalogue"
@@ -232,10 +201,9 @@ export const Navbar = () => {
                 </Link>
               </div>
             </div>
-
           </div>
-        </div>
-      )}
+        )}
+      </header>
     </>
   );
 };
