@@ -54,31 +54,6 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* Top Notification Announcement Bar */}
-      <div className="bg-caffeine-darker border-b border-caffeine-cardBorder py-1.5 px-3 sm:px-4 text-[11px] sm:text-xs text-caffeine-cream w-full max-w-full">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
-            <span className="px-2 py-0.5 rounded-full bg-caffeine-gold/20 text-caffeine-gold font-extrabold text-[9px] sm:text-[10px] uppercase tracking-wide shrink-0">
-              OFFRE SPÉCIALE
-            </span>
-            <span className="text-caffeine-cream font-medium text-[11px] sm:text-xs truncate">
-              Livraison offerte dès 30 000 FCFA avec le code <strong className="text-caffeine-gold font-bold">GOURMAND20</strong> (-20%)
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-4 text-caffeine-subtle text-xs shrink-0">
-            <span className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-caffeine-gold" />
-              Commandes expédiées fraîches 7j/7
-            </span>
-            <span className="text-caffeine-cardBorder">|</span>
-            <Link href="/admin" className="flex items-center gap-1.5 hover:text-caffeine-gold transition-colors font-medium">
-              <ShieldCheck className="w-3.5 h-3.5 text-caffeine-gold" />
-              Espace Admin
-            </Link>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navigation Header */}
       <header
         className={`sticky top-0 z-40 transition-all duration-300 w-full max-w-full ${
@@ -87,12 +62,12 @@ export const Navbar = () => {
             : 'bg-white/95 backdrop-blur-md border-b border-caffeine-cardBorder py-3 sm:py-4 shadow-sm shadow-black/[0.03]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 sm:gap-3 group shrink-0">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-caffeine-gold to-caffeine-goldHover flex items-center justify-center shadow-gold-sm group-hover:scale-105 transition-transform shadow-md shrink-0">
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-caffeine-gold to-caffeine-goldHover flex items-center justify-center shadow-gold-sm group-hover:scale-105 transition-transform shadow-md shrink-0">
+              <Sparkles className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-white" />
             </div>
             <div className="flex flex-col">
               <span className="font-display font-black text-sm xs:text-base sm:text-lg tracking-wider text-caffeine-cream flex items-center gap-1">
@@ -125,7 +100,7 @@ export const Navbar = () => {
           </nav>
 
           {/* Right Action Icons */}
-          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             
             {/* Search Link */}
             <Link
@@ -140,15 +115,15 @@ export const Navbar = () => {
             <button
               onClick={toggleCart}
               aria-label="Ouvrir le panier"
-              className="relative p-2 sm:p-2.5 rounded-full bg-white border border-caffeine-cardBorder hover:border-caffeine-gold/60 text-caffeine-cream hover:text-caffeine-gold transition-all duration-200 group flex items-center gap-1.5 sm:gap-2 shadow-sm hover:shadow-md"
+              className="relative p-2.5 rounded-full bg-white border border-caffeine-cardBorder hover:border-caffeine-gold/60 text-caffeine-cream hover:text-caffeine-gold transition-all duration-200 group flex items-center gap-1.5 sm:gap-2 shadow-sm hover:shadow-md"
             >
-              <ShoppingBag className="w-4 h-4 sm:w-5 sm:h-5 text-caffeine-gold group-hover:scale-110 transition-transform" />
+              <ShoppingBag className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-caffeine-gold group-hover:scale-110 transition-transform" />
               {itemsCount > 0 && (
                 <>
                   <span className="hidden sm:inline-block text-xs font-bold text-caffeine-cream pr-1">
                     {formatPrice(subtotal)}
                   </span>
-                  <span className="absolute -top-1.5 -right-1.5 bg-caffeine-gold text-white font-black text-[10px] sm:text-[11px] w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-md animate-fade-in">
+                  <span className="absolute -top-1 -right-1 bg-caffeine-gold text-white font-black text-[10px] sm:text-[11px] w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full flex items-center justify-center shadow-md animate-fade-in">
                     {itemsCount}
                   </span>
                 </>
@@ -166,7 +141,7 @@ export const Navbar = () => {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-caffeine-cream hover:text-caffeine-gold hover:bg-caffeine-surface border border-caffeine-cardBorder/60 transition-colors"
+              className="lg:hidden p-2.5 rounded-full bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold hover:border-caffeine-gold/60 shadow-sm active:scale-95 transition-all flex items-center justify-center"
               aria-label={mobileMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-drawer"
@@ -244,8 +219,8 @@ export const Navbar = () => {
                 );
               })}
 
-              {/* Action Buttons at Bottom of Drawer */}
-              <div className="pt-3 border-t border-caffeine-cardBorder space-y-2.5" style={{ backgroundColor: '#ffffff' }}>
+              {/* Action Button at Bottom of Drawer */}
+              <div className="pt-3 border-t border-caffeine-cardBorder" style={{ backgroundColor: '#ffffff' }}>
                 <Link
                   href="/catalogue"
                   onClick={() => setMobileMenuOpen(false)}
@@ -253,15 +228,6 @@ export const Navbar = () => {
                 >
                   <span>Explorer le Catalogue de Gâteaux</span>
                   <Sparkles className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="/admin"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="btn-caffeine-secondary w-full text-center !py-3 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm block"
-                  style={{ backgroundColor: '#f4ede2' }}
-                >
-                  <ShieldCheck className="w-4 h-4 text-caffeine-gold" />
-                  <span>Accéder à l&apos;Administration</span>
                 </Link>
               </div>
             </div>
