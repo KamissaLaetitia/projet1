@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #faf6f0;
+  --foreground: #24140e;
+  --card: #ffffff;
+  --card-foreground: #24140e;
+  --popover: #ffffff;
+  --popover-foreground: #24140e;
+  --primary: #c68a3c;
+  --primary-foreground: #ffffff;
+  --secondary: #f4ede2;
+  --secondary-foreground: #24140e;
+  --muted: #f4ede2;
+  --muted-foreground: #685144;
+  --accent: #c68a3c;
+  --accent-foreground: #ffffff;
+  --destructive: #e0454f;
+  --destructive-foreground: #ffffff;
+  --border: #ebd7bf;
+  --input: #ebd7bf;
+  --ring: #c68a3c;
+  --radius: 1rem;
+
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+}
+
+body {
+  background-color: #faf6f0;
+  color: #24140e;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  max-width: 100vw;
+  letter-spacing: -0.01em;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(214, 158, 61, 0.1) 0%, transparent 55%),
+    radial-gradient(circle at 100% 40%, rgba(254, 236, 225, 0.7) 0%, transparent 45%),
+    radial-gradient(circle at 0% 80%, rgba(253, 242, 230, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 70% 100%, rgba(254, 240, 242, 0.6) 0%, transparent 45%);
+  background-attachment: fixed;
+  -webkit-tap-highlight-color: transparent;
+  overflow-wrap: break-word;
+}
+
+html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .btn-caffeine-primary,
+  .btn-caffeine-secondary {
+    max-width: 100%;
+    word-break: break-word;
+  }
+}
+
+/* Custom Luxury Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f4ede2;
+}
+::-webkit-scrollbar-thumb {
+  background: #dfc8af;
+  border-radius: 9999px;
+  border: 1px solid rgba(198, 138, 60, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c68a3c;
+}
+
+/* Selection */
+::selection {
+  background-color: #f7d28b;
+  color: #24140e;
+}
+
+/* Luxury Glow and Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(198, 138, 60, 0.25);
+  box-shadow: 0 8px 30px rgba(180, 130, 80, 0.1), 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(198, 138, 60, 0.2);
+  box-shadow: 0 4px 20px rgba(180, 130, 80, 0.08);
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #a66f28 0%, #c68a3c 45%, #8f5c1d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #f7d28b 0%, #e5ad4c 30%, #c68a3c 70%, #b88127 100%);
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 20px rgba(198, 138, 60, 0.2);
+  border-color: rgba(198, 138, 60, 0.4);
+}
+
+.card-hover-glow {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(180, 130, 80, 0.08), 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.card-hover-glow:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198, 138, 60, 0.55);
+  box-shadow: 0 14px 36px rgba(180, 130, 80, 0.16), 0 4px 12px rgba(198, 138, 60, 0.08);
+}
+
+/* Caffeine X Button Styles */
+.btn-caffeine-primary {
+  @apply inline-flex items-center justify-center font-bold rounded-full px-7 py-3.5 text-sm transition-all duration-300 transform active:scale-95;
+  background: linear-gradient(135deg, #e8a74e 0%, #c68a3c 50%, #b07427 100%);
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 20px rgba(198, 138, 60, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-caffeine-primary:hover {
+  background: linear-gradient(135deg, #f0b561 0%, #d49847 50%, #bd7f2e 100%);
+  box-shadow: 0 6px 28px rgba(198, 138, 60, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-caffeine-secondary {
+  @apply inline-flex items-center justify-center font-bold rounded-full px-7 py-3.5 text-sm transition-all duration-300 border border-caffeine-cardBorder bg-white text-caffeine-cream active:scale-95;
+  box-shadow: 0 4px 16px rgba(180, 130, 80, 0.08);
+}
+
+.btn-caffeine-secondary:hover {
+  border-color: rgba(198, 138, 60, 0.6);
+  color: #c68a3c;
+  background-color: #fdfaf6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(180, 130, 80, 0.14);
+}
+
+/* Uppercase tracking like Caffeine X */
+.tracking-caffeine {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+/* Ambient Radial Glow Containers */
+.ambient-glow-gold {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(235, 185, 105, 0.18) 0%, rgba(250, 240, 220, 0) 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  border-radius: 9999px;
+}
+
+.ambient-glow-caramel {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(245, 190, 150, 0.16) 0%, rgba(254, 245, 235, 0) 70%);
+  filter: blur(70px);
+  pointer-events: none;
+  border-radius: 9999px;
+}
