@@ -40,6 +40,18 @@ export const Navbar = () => {
     { name: 'Suivi Commande', href: '/suivi-commande' },
   ];
 
+  // Lock body scroll when mobile menu is open on iOS / Android
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <>
       {/* Top Notification Announcement Bar */}
@@ -154,56 +166,101 @@ export const Navbar = () => {
             {/* Mobile Menu Trigger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 sm:p-2 rounded-lg text-caffeine-cream hover:text-caffeine-gold hover:bg-caffeine-surface transition-colors"
-              aria-label="Menu mobile"
+              className="lg:hidden p-2 rounded-xl text-caffeine-cream hover:text-caffeine-gold hover:bg-caffeine-surface border border-caffeine-cardBorder/60 transition-colors"
+              aria-label={mobileMenuOpen ? "Fermer le menu de navigation" : "Ouvrir le menu de navigation"}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
+      </header>
 
-        {/* Mobile Navigation Drawer */}
-        {mobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <div
-              onClick={() => setMobileMenuOpen(false)}
-              className="lg:hidden fixed inset-0 top-[100px] bg-black/30 backdrop-blur-sm z-40 animate-fade-in"
-            />
-            <div className="lg:hidden fixed inset-x-0 top-full bg-white/98 backdrop-blur-2xl border-b border-caffeine-cardBorder p-4 sm:p-6 shadow-2xl animate-slide-up z-50 max-h-[calc(100vh-70px)] overflow-y-auto">
-              <div className="flex flex-col gap-2 sm:gap-3">
-                {navLinks.map((link) => (
+      {/* Bulletproof Mobile Drawer (Standalone Portal Fixed Container) */}
+      {mobileMenuOpen && (
+        <div
+          id="mobile-nav-drawer"
+          className="lg:hidden fixed inset-0 z-50 flex flex-col justify-start"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu principal"
+        >
+          {/* Dimmed Blur Backdrop */}
+          <div
+            onClick={() => setMobileMenuOpen(false)}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-200 animate-fade-in"
+            aria-hidden="true"
+          />
+
+          {/* Sliding Content Container */}
+          <div className="relative w-full bg-white border-b-2 border-caffeine-gold/40 shadow-2xl z-10 max-h-[90vh] overflow-y-auto overscroll-contain flex flex-col">
+            
+            {/* Drawer Header with Title & Close Button */}
+            <div className="flex items-center justify-between px-4 py-3.5 bg-caffeine-surface border-b border-caffeine-cardBorder">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-caffeine-gold to-caffeine-goldHover flex items-center justify-center shadow-sm">
+                  <Sparkles className="w-3.5 h-3.5 text-white" />
+                </div>
+                <span className="font-display font-black text-sm text-caffeine-cream tracking-wide">
+                  PÂTISSERIE <span className="text-caffeine-gold">ROYALE</span>
+                </span>
+              </div>
+
+              <button
+                onClick={() => setMobileMenuOpen(false)}
+                className="p-1.5 rounded-lg bg-white border border-caffeine-cardBorder text-caffeine-cream hover:text-caffeine-gold shadow-sm"
+                aria-label="Fermer le menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Links Stack (Vertical Space-Y to Guarantee 0 Overlap on All Devices) */}
+            <div className="p-4 space-y-2.5 overflow-y-auto">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
                   <Link
                     key={link.name}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl text-sm sm:text-base font-medium text-caffeine-cream hover:text-caffeine-gold hover:bg-caffeine-surface transition-colors flex items-center justify-between"
+                    className={`w-full min-h-[48px] flex items-center justify-between px-4 py-3 rounded-xl font-display font-medium text-sm transition-all border ${
+                      isActive
+                        ? 'bg-caffeine-gold/15 border-caffeine-gold text-caffeine-gold font-bold shadow-sm'
+                        : 'bg-caffeine-surface border-caffeine-cardBorder text-caffeine-cream active:bg-caffeine-gold/10'
+                    }`}
                   >
                     <span>{link.name}</span>
-                    <span className="text-caffeine-gold font-bold">→</span>
+                    <span className="text-caffeine-gold font-bold text-base">→</span>
                   </Link>
-                ))}
-                <div className="pt-3 sm:pt-4 border-t border-caffeine-cardBorder flex flex-col gap-2.5 sm:gap-3">
-                  <Link
-                    href="/catalogue"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="btn-caffeine-primary w-full text-center !py-3 text-sm"
-                  >
-                    Explorer le Catalogue de Gâteaux
-                  </Link>
-                  <Link
-                    href="/admin"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="btn-caffeine-secondary w-full text-center text-xs !py-2.5"
-                  >
-                    Accéder à l&apos;Administration
-                  </Link>
-                </div>
+                );
+              })}
+
+              {/* Action Buttons at Bottom of Drawer */}
+              <div className="pt-3 border-t border-caffeine-cardBorder space-y-2">
+                <Link
+                  href="/catalogue"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="btn-caffeine-primary w-full text-center !py-3 text-sm flex items-center justify-center gap-2 shadow-gold-sm"
+                >
+                  <span>Explorer le Catalogue</span>
+                  <Sparkles className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/admin"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="btn-caffeine-secondary w-full text-center !py-2.5 text-xs flex items-center justify-center gap-1.5"
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-caffeine-gold" />
+                  <span>Espace Administration</span>
+                </Link>
               </div>
             </div>
-          </>
-        )}
-      </header>
+
+          </div>
+        </div>
+      )}
     </>
   );
 };
