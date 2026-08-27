@@ -103,10 +103,10 @@ export const PromotionsSection = () => {
               <p className="text-[11px] text-caffeine-subtle mt-0.5">Dès 25 000 FCFA d&apos;achat</p>
             </div>
             <button
-              onClick={() => handleCopyCode('GOURMAND20')}
+              onClick={() => handleCopyCode('BIENVENUE20')}
               className="px-3 py-2 rounded-xl bg-caffeine-gold/15 border border-caffeine-gold/40 hover:bg-caffeine-gold hover:text-white text-caffeine-gold text-xs font-black transition-all flex items-center justify-center gap-1.5 shadow-sm shrink-0 self-start sm:self-auto"
             >
-              {copiedCode === 'GOURMAND20' ? (
+              {copiedCode === 'BIENVENUE20' ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-green-600 shrink-0" />
                   <span>Copié !</span>
@@ -114,7 +114,7 @@ export const PromotionsSection = () => {
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5 shrink-0" />
-                  <span>GOURMAND20</span>
+                  <span>BIENVENUE20</span>
                 </>
               )}
             </button>
