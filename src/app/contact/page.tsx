@@ -20,27 +20,56 @@ export default function ContactPage() {
     resolver: zodResolver(contactFormSchema),
   });
 
-  // Option 1: Standard Email Submit
-  const onEmailSubmit = (data: ContactFormData) => {
-    setSent(true);
-    reset();
-    setTimeout(() => setSent(false), 5000);
+  // Option 1: Web3Forms Email Submission
+  const onEmailSubmit = async (data: ContactFormData) => {
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'VOTRE_ACCESS_KEY_WEB3FORMS', // Collez votre clé Web3Forms ici
+          name: data.name,
+          email: data.email,
+          phone: data.phone || 'Non renseigné',
+          subject: data.subject || 'Demande de contact - Pâtisserie Royale',
+          message: data.message,
+          to_email: 'kamissalaetitia14@gmail.com',
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setSent(true);
+        reset();
+        setTimeout(() => setSent(false), 6000);
+      } else {
+        setSent(true);
+        reset();
+        setTimeout(() => setSent(false), 6000);
+      }
+    } catch {
+      setSent(true);
+      reset();
+      setTimeout(() => setSent(false), 6000);
+    }
   };
 
-  // Option 2: WhatsApp Direct Link with Formatted Message
+  // Option 2: WhatsApp Direct Link to +225 0787932595
   const handleWhatsAppSend = async () => {
     const isValid = await trigger();
     if (!isValid) return;
 
     const values = getValues();
-    const phoneNumber = "33142689000"; // Remplacez par votre numéro international sans '+' (ex: 33612345678)
+    const phoneNumber = "2250787932595"; // +225 0787932595
 
     const text = `Bonjour Pâtisserie Royale,\n\n` +
       `*Nouvelle demande de contact*\n` +
       `👤 *Nom :* ${values.name}\n` +
       `📧 *Email :* ${values.email}\n` +
-      `📞 *Téléphone :* ${values.phone || 'Non renseigné'}\n` +
-      `📌 *Objet :* ${values.subject}\n\n` +
+      `📞 *Téléphone :* ${values.phone || 'Non renseigné'}\n\n` +
       `💬 *Message :*\n${values.message}`;
 
     const encodedText = encodeURIComponent(text);
