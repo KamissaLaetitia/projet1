@@ -96,7 +96,7 @@ export const HeroSection = () => {
             <div className="relative w-full max-w-[460px] aspect-[4/5] rounded-[28px] sm:rounded-[32px] overflow-hidden p-2 sm:p-2.5 bg-gradient-to-b from-caffeine-gold/30 via-caffeine-cardBorder to-white shadow-[0_20px_50px_rgba(180,130,80,0.18)] group">
               <div className="relative w-full h-full rounded-[22px] sm:rounded-[24px] overflow-hidden bg-caffeine-surface shadow-inner">
                 <img
-                  src="https://images.pexels.com/photos/1721932/pexels-photo-1721932.jpeg?auto=compress&cs=tinysrgb&w=1000"
+                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=85"
                   alt="Gâteau d'exception au chocolat noir Valrhona et or comestible"
                   className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-1000 ease-out"
                 />
