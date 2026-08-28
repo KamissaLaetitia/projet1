@@ -241,8 +241,8 @@ export default function ContactPage() {
                 {errors.message && <span className="text-[10px] text-red-500 mt-1">{errors.message.message}</span>}
               </div>
 
-              {/* Dual Action Buttons: Email & WhatsApp */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              {/* Bouton d'Envoi E-mail */}
+              <div className="pt-2">
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -251,27 +251,25 @@ export default function ContactPage() {
                   <Send className="w-4 h-4" />
                   <span>Envoyer par E-mail</span>
                 </button>
-
-                <a
-                  href="https://wa.me/2250787932595"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={(e) => {
-                    const name = getValues('name');
-                    const message = getValues('message');
-                    if (name || message) {
-                      e.preventDefault();
-                      handleWhatsAppSend();
-                    }
-                  }}
-                  className="inline-flex items-center justify-center font-bold rounded-full px-5 py-3.5 text-xs sm:text-sm transition-all duration-300 transform active:scale-95 bg-[#25D366] hover:bg-[#20ba59] text-white shadow-[0_4px_16px_rgba(37,211,102,0.3)] gap-2 cursor-pointer border border-[#20ba59] text-center"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Discuter sur WhatsApp</span>
-                </a>
               </div>
 
             </form>
+
+            {/* Bouton WhatsApp direct sous le formulaire */}
+            <div className="pt-4 border-t border-caffeine-cardBorder/60 text-center space-y-3">
+              <span className="text-[11px] font-bold text-caffeine-subtle uppercase tracking-wider block">
+                — Ou contact instantané —
+              </span>
+              <a
+                href="https://wa.me/2250787932595"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center font-bold rounded-full w-full py-3.5 px-6 text-xs sm:text-sm transition-all duration-300 transform active:scale-95 bg-[#25D366] hover:bg-[#20ba59] text-white shadow-[0_4px_16px_rgba(37,211,102,0.25)] gap-2 cursor-pointer border border-[#20ba59] text-center"
+              >
+                <MessageCircle className="w-4.5 h-4.5" />
+                <span>M&apos;écrire sur WhatsApp</span>
+              </a>
+            </div>
           </div>
 
         </div>
