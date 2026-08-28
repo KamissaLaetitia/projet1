@@ -243,7 +243,7 @@ function SuiviCommandeContent() {
               <div className="p-4 rounded-2xl bg-caffeine-surface border border-caffeine-cardBorder flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-caffeine-subtle shadow-sm">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-caffeine-gold" />
-                  <span>Une question sur votre livraison ? Service client au <strong>01 42 68 90 00</strong></span>
+                  <span>Une question sur votre livraison ? Service client au <strong>+225 07 87 93 25 95</strong></span>
                 </div>
                 <Link href="/contact" className="text-caffeine-gold hover:underline font-bold">
                   Contacter le laboratoire →
