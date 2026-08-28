@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { MapPin, Phone, Mail, Clock, Send, Sparkles, CheckCircle2, MessageSquare } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, Sparkles, CheckCircle2, MessageSquare, MessageCircle } from 'lucide-react';
 import { contactFormSchema, ContactFormData } from '@/lib/validations';
 
 export default function ContactPage() {
@@ -13,15 +13,40 @@ export default function ContactPage() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    getValues,
+    trigger,
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
   });
 
-  const onSubmit = (data: ContactFormData) => {
+  // Option 1: Standard Email Submit
+  const onEmailSubmit = (data: ContactFormData) => {
     setSent(true);
     reset();
     setTimeout(() => setSent(false), 5000);
+  };
+
+  // Option 2: WhatsApp Direct Link with Formatted Message
+  const handleWhatsAppSend = async () => {
+    const isValid = await trigger();
+    if (!isValid) return;
+
+    const values = getValues();
+    const phoneNumber = "33142689000"; // Remplacez par votre numéro international sans '+' (ex: 33612345678)
+
+    const text = `Bonjour Pâtisserie Royale,\n\n` +
+      `*Nouvelle demande de contact*\n` +
+      `👤 *Nom :* ${values.name}\n` +
+      `📧 *Email :* ${values.email}\n` +
+      `📞 *Téléphone :* ${values.phone || 'Non renseigné'}\n` +
+      `📌 *Objet :* ${values.subject}\n\n` +
+      `💬 *Message :*\n${values.message}`;
+
+    const encodedText = encodeURIComponent(text);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -118,11 +143,11 @@ export default function ContactPage() {
             {sent && (
               <div className="p-4 rounded-2xl bg-green-50 border border-green-200 text-green-700 text-xs flex items-center gap-2 animate-fade-in">
                 <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
-                <span>Votre message a été transmis à notre équipe ! Nous vous répondrons très rapidement.</span>
+                <span>Votre message a été transmis par e-mail avec succès ! Nous vous répondrons très rapidement.</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={handleSubmit(onEmailSubmit)} className="space-y-4">
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -187,14 +212,26 @@ export default function ContactPage() {
                 {errors.message && <span className="text-[10px] text-red-500 mt-1">{errors.message.message}</span>}
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-caffeine-primary w-full text-sm !py-3.5 shadow-gold-sm flex items-center justify-center gap-2"
-              >
-                <Send className="w-4 h-4" />
-                <span>Envoyer le Message</span>
-              </button>
+              {/* Dual Action Buttons: Email & WhatsApp */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-caffeine-primary w-full text-xs sm:text-sm !py-3.5 shadow-gold-sm flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Envoyer par E-mail</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={handleWhatsAppSend}
+                  className="inline-flex items-center justify-center font-bold rounded-full px-5 py-3.5 text-xs sm:text-sm transition-all duration-300 transform active:scale-95 bg-[#25D366] hover:bg-[#20ba59] text-white shadow-[0_4px_16px_rgba(37,211,102,0.3)] gap-2 cursor-pointer border border-[#20ba59]"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Contacter sur WhatsApp</span>
+                </button>
+              </div>
 
             </form>
           </div>
