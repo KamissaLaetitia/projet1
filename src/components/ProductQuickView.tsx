@@ -75,6 +75,7 @@ export const ProductQuickView: React.FC<ProductQuickViewProps> = ({
               <img
                 src={product.imageUrl}
                 alt={product.name}
+                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover object-center"
                 onError={() => setImgError(true)}
                 loading="eager"
