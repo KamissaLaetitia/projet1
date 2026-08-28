@@ -78,14 +78,14 @@ export const Footer = () => {
             </p>
 
             <div className="pt-2 text-xs text-caffeine-subtle space-y-2">
-              <div className="flex items-center gap-2 text-caffeine-cream">
+              <a href="https://wa.me/2250787932595" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-caffeine-cream hover:text-caffeine-gold transition-colors">
                 <Phone className="w-4 h-4 text-caffeine-gold" />
-                <span>01 42 68 90 00 (Service Client 7j/7)</span>
-              </div>
-              <div className="flex items-center gap-2 text-caffeine-cream">
+                <span>+225 07 87 93 25 95 (WhatsApp & Appel)</span>
+              </a>
+              <a href="mailto:kamissalaetitia14@gmail.com" className="flex items-center gap-2 text-caffeine-cream hover:text-caffeine-gold transition-colors">
                 <Mail className="w-4 h-4 text-caffeine-gold" />
-                <span>contact@patisserie-royale.fr</span>
-              </div>
+                <span>kamissalaetitia14@gmail.com</span>
+              </a>
             </div>
           </div>
 
