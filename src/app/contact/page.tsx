@@ -252,14 +252,23 @@ export default function ContactPage() {
                   <span>Envoyer par E-mail</span>
                 </button>
 
-                <button
-                  type="button"
-                  onClick={handleWhatsAppSend}
-                  className="inline-flex items-center justify-center font-bold rounded-full px-5 py-3.5 text-xs sm:text-sm transition-all duration-300 transform active:scale-95 bg-[#25D366] hover:bg-[#20ba59] text-white shadow-[0_4px_16px_rgba(37,211,102,0.3)] gap-2 cursor-pointer border border-[#20ba59]"
+                <a
+                  href="https://wa.me/2250787932595"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    const name = getValues('name');
+                    const message = getValues('message');
+                    if (name || message) {
+                      e.preventDefault();
+                      handleWhatsAppSend();
+                    }
+                  }}
+                  className="inline-flex items-center justify-center font-bold rounded-full px-5 py-3.5 text-xs sm:text-sm transition-all duration-300 transform active:scale-95 bg-[#25D366] hover:bg-[#20ba59] text-white shadow-[0_4px_16px_rgba(37,211,102,0.3)] gap-2 cursor-pointer border border-[#20ba59] text-center"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Contacter sur WhatsApp</span>
-                </button>
+                  <span>Discuter sur WhatsApp</span>
+                </a>
               </div>
 
             </form>
