@@ -110,25 +110,25 @@ export default function ContactPage() {
               </h2>
 
               <div className="space-y-4 text-xs sm:text-sm text-caffeine-subtle font-medium">
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-caffeine-surface border border-caffeine-cardBorder flex items-center justify-center text-caffeine-gold flex-shrink-0 shadow-sm">
+                <a href="https://wa.me/2250787932595" target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-caffeine-gold transition-colors group">
+                  <div className="w-9 h-9 rounded-xl bg-caffeine-surface border border-caffeine-cardBorder flex items-center justify-center text-caffeine-gold flex-shrink-0 shadow-sm group-hover:border-caffeine-gold/50">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
-                    <strong className="text-caffeine-cream block font-bold">Téléphone</strong>
-                    <span>01 42 68 90 00 (7j/7 de 8h à 20h)</span>
+                    <strong className="text-caffeine-cream block font-bold group-hover:text-caffeine-gold">Téléphone & WhatsApp</strong>
+                    <span>+225 07 87 93 25 95 (Disponible 7j/7)</span>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-start gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-caffeine-surface border border-caffeine-cardBorder flex items-center justify-center text-caffeine-gold flex-shrink-0 shadow-sm">
+                <a href="mailto:kamissalaetitia14@gmail.com" className="flex items-start gap-3 hover:text-caffeine-gold transition-colors group">
+                  <div className="w-9 h-9 rounded-xl bg-caffeine-surface border border-caffeine-cardBorder flex items-center justify-center text-caffeine-gold flex-shrink-0 shadow-sm group-hover:border-caffeine-gold/50">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <strong className="text-caffeine-cream block font-bold">Email</strong>
-                    <span>contact@patisserie-royale.fr</span>
+                    <strong className="text-caffeine-cream block font-bold group-hover:text-caffeine-gold">E-mail</strong>
+                    <span>kamissalaetitia14@gmail.com</span>
                   </div>
-                </div>
+                </a>
 
                 <div className="flex items-start gap-3">
                   <div className="w-9 h-9 rounded-xl bg-caffeine-surface border border-caffeine-cardBorder flex items-center justify-center text-caffeine-gold flex-shrink-0 shadow-sm">
