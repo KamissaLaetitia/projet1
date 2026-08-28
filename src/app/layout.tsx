@@ -3,6 +3,7 @@ import './globals.css';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { CartDrawer } from '@/components/CartDrawer';
+import { WhatsAppFloatingButton } from '@/components/WhatsAppFloatingButton';
 import { ProductsProvider } from '@/context/ProductsContext';
 
 export const viewport: Viewport = {
@@ -38,6 +39,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <CartDrawer />
+          <WhatsAppFloatingButton />
         </ProductsProvider>
       </body>
     </html>
